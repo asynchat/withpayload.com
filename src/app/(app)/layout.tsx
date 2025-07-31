@@ -1,5 +1,3 @@
-import { ColorSchemeScript } from "@mantine/core";
-
 import "./globals.css";
 import "@mantine/core/styles.css";
 
@@ -21,9 +19,6 @@ const Layout = async ({ children }: LayoutProps) => {
 
   return (
     <html>
-      <head>
-        <ColorSchemeScript />
-      </head>
 
       {analytics?.googleAnalyticsId && (
         <GoogleAnalytics id={analytics.googleAnalyticsId} />
@@ -34,8 +29,6 @@ const Layout = async ({ children }: LayoutProps) => {
           src={analytics.umami.umamiSrc}
         />
       )}
-
-      <script async src="https://tally.so/widgets/embed.js"></script>
 
       <body>
         <Toaster />

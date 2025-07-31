@@ -31,7 +31,7 @@ export const Header = () => {
               <Link href="/">
                 <div className="flex items-center">
                   <div className="text-xl font-bold cursor-pointer">
-                    withPayload
+                    withAI
                   </div>
                   <div>
                     <div className="ml-2 block rounded-full bg-gray-700 px-1.5 py-0.5 text-xs font-semibold text-white">
@@ -47,28 +47,18 @@ export const Header = () => {
                 href="/"
                 className="inline-flex items-center px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-700"
               >
-                Projects
+                应用
               </Link>
               <Link
                 href="/blog"
                 className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:text-gray-700"
               >
-                Blog
+                博客
               </Link>
             </div>
           </div>
 
-          <div className="flex items-center gap-4">
-            <Button
-              data-tally-open="w7V8Xa"
-              data-tally-layout="modal"
-              data-tally-width="800"
-              data-tally-emoji-text="🚀"
-              data-tally-emoji-animation="wave"
-            >
-              Submit
-            </Button>
-          </div>
+          
         </div>
       </Container>
 
@@ -84,13 +74,13 @@ export const Header = () => {
             href="/"
             className="transition-all block border-l-4 border-transparent py-2 pl-8 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
           >
-            Projects
+            应用
           </Link>
           <Link
             href="/blog"
             className="transition-all block border-l-4 border-transparent py-2 pl-8 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
           >
-            Blog
+            博客
           </Link>
         </div>
       </div>

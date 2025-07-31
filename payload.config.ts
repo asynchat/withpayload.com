@@ -10,7 +10,7 @@ import { ProjectsCollections } from "@/_features/projects/collections";
 import { seedProjects } from "@/_features/projects/seed";
 import { UsersCollections } from "@/_features/users/collections";
 import { S3_PLUGIN_CONFIG } from "@/utils/s3";
-import { postgresAdapter } from "@payloadcms/db-postgres";
+import { sqliteAdapter } from '@payloadcms/db-sqlite'
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { s3Storage as s3StoragePlugin } from "@payloadcms/storage-s3";
 import { buildConfig, Payload } from "payload";
@@ -45,12 +45,11 @@ export default buildConfig({
     },
   },
   // the type of DB you would like to use
-  db: postgresAdapter({
-    pool: {
-      connectionString: process.env.DATABASE_URL,
+  db: sqliteAdapter({
+    client: {
+      url: process.env.DATABASE_URL || "file:./db.sqlite",
     },
     idType: "uuid",
-    push: false,
   }),
 
   // richText editor
@@ -62,18 +61,18 @@ export default buildConfig({
     supportedLanguages: { en },
   },
   plugins: [
-    s3StoragePlugin({
-      ...S3_PLUGIN_CONFIG,
-      collections: {
-        ["media"]: {
-          disableLocalStorage: true,
-          generateFileURL: (args: any) => {
-            return `https://${process.env.NEXT_PUBLIC_S3_HOSTNAME}/${args.prefix}/${args.filename}`;
-          },
-          prefix: process.env.NEXT_PUBLIC_UPLOAD_PREFIX || "media",
-        },
-      },
-    }),
+    // s3StoragePlugin({
+    //   ...S3_PLUGIN_CONFIG,
+    //   collections: {
+    //     ["media"]: {
+    //       disableLocalStorage: true,
+    //       generateFileURL: (args: any) => {
+    //         return `https://${process.env.NEXT_PUBLIC_S3_HOSTNAME}/${args.prefix}/${args.filename}`;
+    //       },
+    //       prefix: process.env.NEXT_PUBLIC_UPLOAD_PREFIX || "media",
+    //     },
+    //   },
+    // }),
   ],
   graphQL: {
     disable: true,

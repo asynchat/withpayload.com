@@ -52,6 +52,7 @@ const ProjectsPage = async () => {
                   <Link
                     href={`/projects/${project.slug}`}
                     className="inline-block"
+                    key={project.slug}
                   >
                     <Card className="!p-0 h-full flex flex-col">
                       <div className="border-b">
