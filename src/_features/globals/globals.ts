@@ -7,6 +7,7 @@ export const GlobalSettings: GlobalConfig = {
     read: isAnyone,
     update: isAdmin,
   },
+  label: '设置',
   fields: [
     {
       name: "seo",
