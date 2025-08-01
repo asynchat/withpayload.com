@@ -15,6 +15,7 @@ import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { s3Storage as s3StoragePlugin } from "@payloadcms/storage-s3";
 import { buildConfig, Payload } from "payload";
 import { en } from "payload/i18n/en";
+import { zh } from "payload/i18n/zh";
 import sharp from "sharp";
 
 const filename = fileURLToPath(import.meta.url);
@@ -31,9 +32,11 @@ export default buildConfig({
     ...ProjectsCollections,
     ...BlogCollections,
   ],
-  debug: true,
+  debug: process.env.PAYLOAD_DEBUG === 'true',
   globals: [GlobalSettings],
   admin: {
+    avatar: 'default',
+    dateFormat: "yyyy-MM-dd HH:mm:ss",
     autoLogin: {
       email:
         isDevelopment && !isProduction
@@ -58,7 +61,8 @@ export default buildConfig({
     outputFile: path.resolve(dirname, "payload-types.ts"),
   },
   i18n: {
-    supportedLanguages: { en },
+    fallbackLanguage: "zh",
+    supportedLanguages: { en, zh },
   },
   plugins: [
     // s3StoragePlugin({

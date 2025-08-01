@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import { redirect } from "next/navigation";
 
 export const metadata: Metadata = {
-  title: "withPayload.com - explore payload plugins and starters",
-  description: "explore payload plugins and starters",
+  title: `${process.env.NEXT_PUBLIC_SITE_TITLE} - ${process.env.NEXT_PUBLIC_SITE_DESCRIPTION}`,
+  description: process.env.NEXT_PUBLIC_SITE_DESCRIPTION,
 };
 
 const Homepage = async () => {

@@ -57,6 +57,17 @@ const Posts: CollectionConfig = {
       hasMany: true,
     },
     {
+      name: "project",
+      type: "relationship",
+      relationTo: "projects",
+      label: "Project",
+      admin: {
+        position: "sidebar",
+        description:
+          "Select the project this post belongs to",
+      }
+    },
+    {
       name: "featuredImage",
       type: "upload",
       relationTo: "media",

@@ -1,10 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { notFound, useRouter } from "next/navigation";
+import { notFound } from "next/navigation";
 
 import "next/navigation";
 
-import { Metadata } from "next/types";
 
 import { getAdjacentPosts, getPostBySlug } from "@/_features/blog/actions";
 import { getGlobalSettings } from "@/_features/globals/actions";
@@ -87,7 +86,7 @@ const BlogPage = async ({ params }: { params: Params }) => {
           <span>
             {typeof post.author === "string"
               ? post.author
-              : post.author.firstName}
+              : post.author.username}
           </span>
           <span aria-hidden="true" className="mx-2 hidden xs:block">
             {MID_DOT}
@@ -107,14 +106,14 @@ const BlogPage = async ({ params }: { params: Params }) => {
                       ? post.author.avatar
                       : post.author.avatar.url || ""
                   }
-                  alt={post.author.firstName || "Author"}
+                  alt={post.author.username || "Author"}
                   width={48}
                   height={48}
                   className="size-12 rounded-full object-cover block aspect-square"
                 />
               ) : (
                 <div className="size-12 rounded-full bg-gray-300 flex items-center justify-center text-gray-600 font-semibold">
-                  {post.author?.firstName
+                  {post.author?.username
                     ?.split(" ")
                     .slice(0, 2)
                     .map((word: any) => word[0])
@@ -126,7 +125,7 @@ const BlogPage = async ({ params }: { params: Params }) => {
             <h3 className="text-base font-semibold">
               {typeof post.author === "string"
                 ? post.author
-                : post.author.firstName}
+                : post.author.username}
             </h3>
           </div>
 

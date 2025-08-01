@@ -25,11 +25,10 @@ const ProjectsPage = async () => {
         <Container size="lg" className="">
           <div className="space-y-4 m-auto text-center">
             <Title className="text-4xl">
-              Explore resources for PayloadCMS{" "}
+              {process.env.NEXT_PUBLIC_SITE_PROJECT_TITLE}
             </Title>
             <Description>
-              Discover starter kits and plugins and other useful stuff for
-              PayloadCMS.
+              {process.env.NEXT_PUBLIC_SITE_PROJECT_DESCRIPTION}
             </Description>
           </div>
         </Container>

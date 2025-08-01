@@ -178,12 +178,8 @@ export interface Session {
  */
 export interface User {
   id: string;
-  firstName?: string | null;
-  lastName?: string | null;
   username?: string | null;
   avatar?: (string | null) | Media;
-  provider?: string | null;
-  providerAccountId?: string | null;
   metadata?:
     | {
         [k: string]: unknown;
@@ -193,10 +189,7 @@ export interface User {
     | number
     | boolean
     | null;
-  timezone?: string | null;
-  timezoneOffset?: string | null;
   role?: ('admin' | 'user') | null;
-  stripeCustomerId?: string | null;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -278,6 +271,10 @@ export interface Post {
   };
   author: string | User;
   tags?: (string | PostsTag)[] | null;
+  /**
+   * Select the project this post belongs to
+   */
+  project?: (string | null) | Project;
   /**
    * This image will be used as the featured image for the post
    */
@@ -423,17 +420,10 @@ export interface SessionSelect<T extends boolean = true> {
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
-  firstName?: T;
-  lastName?: T;
   username?: T;
   avatar?: T;
-  provider?: T;
-  providerAccountId?: T;
   metadata?: T;
-  timezone?: T;
-  timezoneOffset?: T;
   role?: T;
-  stripeCustomerId?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -493,6 +483,7 @@ export interface PostsSelect<T extends boolean = true> {
   content?: T;
   author?: T;
   tags?: T;
+  project?: T;
   featuredImage?: T;
   updatedAt?: T;
   createdAt?: T;

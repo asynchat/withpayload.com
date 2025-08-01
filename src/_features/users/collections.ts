@@ -8,15 +8,6 @@ const User: CollectionConfig = {
   auth: true,
   fields: [
     {
-      name: "firstName",
-      type: "text",
-      saveToJWT: true,
-    },
-    {
-      name: "lastName",
-      type: "text",
-    },
-    {
       name: "username",
       type: "text",
     },
@@ -27,35 +18,14 @@ const User: CollectionConfig = {
       required: false,
     },
     {
-      name: "provider",
-      type: "text",
-    },
-    {
-      name: "providerAccountId",
-      type: "text",
-    },
-    {
       name: "metadata",
       type: "json",
     },
-    {
-      name: "timezone",
-      type: "text",
-    },
-    {
-      name: "timezoneOffset",
-      type: "text",
-    },
-
     {
       name: "role",
       type: "select",
       options: ["admin", "user"],
       saveToJWT: true,
-    },
-    {
-      name: "stripeCustomerId",
-      type: "text",
     },
   ],
 };

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import Link from "next/link";
 
-import { Button } from "@/components/ui/Button";
 import { Container } from "@/components/ui/Container";
 import { IconMenu2 } from "@tabler/icons-react";
 import classNames from "classnames";
@@ -31,11 +30,11 @@ export const Header = () => {
               <Link href="/">
                 <div className="flex items-center">
                   <div className="text-xl font-bold cursor-pointer">
-                    withAI
+                    {process.env.NEXT_PUBLIC_SITE_NAME}
                   </div>
                   <div>
                     <div className="ml-2 block rounded-full bg-gray-700 px-1.5 py-0.5 text-xs font-semibold text-white">
-                      Beta
+                      {process.env.NEXT_PUBLIC_SITE_VERSION}
                     </div>
                   </div>
                 </div>
