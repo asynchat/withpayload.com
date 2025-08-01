@@ -2,11 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 
 import { getGlobalSettings } from "@/_features/globals/actions";
-import { Container, Description, NewTabLink, Title } from "@/components/ui";
+import { Container } from "@/components/ui";
 import { APP_URL } from "@/constants";
 import { getMetadata } from "@/utils/getMetadata";
 import { formatDate } from "@/utils/helpers";
-import { IconBrandGithub, IconBrandVercel } from "@tabler/icons-react";
 
 import { getPosts } from "../../../_features/blog/actions";
 
@@ -29,7 +28,6 @@ type Params = Promise<{ sortBy: string }>;
 const Homepage = async ({ params }: { params: Params }) => {
   const { sortBy: selectedSortBy } = await params;
 
-  const { homepage } = await getGlobalSettings();
   const { docs: posts } = await getPosts({
     sortBy: selectedSortBy,
   });

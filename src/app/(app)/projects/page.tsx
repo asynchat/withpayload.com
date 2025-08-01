@@ -12,8 +12,8 @@ import { Media } from "payload-types";
 import { getProjects } from "../../../_features/projects/actions";
 
 export const metadata: Metadata = {
-  title: "withPayload.com - explore payload plugins and starters",
-  description: "explore payload plugins and starters",
+  title: `${process.env.NEXT_PUBLIC_SITE_PROJECT_TITLE}`,
+  description: process.env.NEXT_PUBLIC_SITE_PROJECT_DESCRIPTION,
 };
 
 const ProjectsPage = async () => {
@@ -39,7 +39,7 @@ const ProjectsPage = async () => {
             <div className="space-y-6 md:space-y-0 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-4">
               {projects.docs.map((project) => {
                 const title =
-                  project.title || stripUrl(project.websiteUrl || "");
+                  project.title || stripUrl(project.shopUrl || "");
                 const categoriesLabelsArray = project.categories?.map(
                   (category) =>
                     typeof category === "string"
@@ -70,12 +70,12 @@ const ProjectsPage = async () => {
                           ))}
                         </div>
                         <div className="flex items-center gap-2">
-                          {project.faviconUrl && (
+                          {/* {project.faviconUrl && (
                             <ResponsiveNextImage
                               src={project.faviconUrl}
                               className="max-w-6 max-h-6 rounded-full border"
                             />
-                          )}
+                          )} */}
 
                           <Title className="text-lg">{title}</Title>
                         </div>
@@ -83,12 +83,6 @@ const ProjectsPage = async () => {
                         <Description className="text-sm">
                           {truncateString(project.description ?? "", 80)}
                         </Description>
-
-                        {project?.createdBy && (
-                          <div className="text-xs text-gray-500 mt-auto">
-                            By {project.createdBy}
-                          </div>
-                        )}
                       </div>
                     </Card>
                   </Link>

@@ -505,31 +505,9 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
  */
 export interface Setting {
   id: string;
-  homepage: {
-    title: string;
-    description?: string | null;
-  };
-  navbar: {
-    title: string;
-  };
-  footer?: {
-    text?: string | null;
-  };
-  socials?: {
-    twitter?: string | null;
-    linkedin?: string | null;
-    github?: string | null;
-  };
   seo?: {
     metaTitle?: string | null;
     metaDescription?: string | null;
-  };
-  analytics?: {
-    googleAnalyticsId?: string | null;
-    umami?: {
-      umamiWebsiteId?: string | null;
-      umamiSrc?: string | null;
-    };
   };
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -539,45 +517,11 @@ export interface Setting {
  * via the `definition` "settings_select".
  */
 export interface SettingsSelect<T extends boolean = true> {
-  homepage?:
-    | T
-    | {
-        title?: T;
-        description?: T;
-      };
-  navbar?:
-    | T
-    | {
-        title?: T;
-      };
-  footer?:
-    | T
-    | {
-        text?: T;
-      };
-  socials?:
-    | T
-    | {
-        twitter?: T;
-        linkedin?: T;
-        github?: T;
-      };
   seo?:
     | T
     | {
         metaTitle?: T;
         metaDescription?: T;
-      };
-  analytics?:
-    | T
-    | {
-        googleAnalyticsId?: T;
-        umami?:
-          | T
-          | {
-              umamiWebsiteId?: T;
-              umamiSrc?: T;
-            };
       };
   updatedAt?: T;
   createdAt?: T;

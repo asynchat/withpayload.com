@@ -3,10 +3,8 @@ import "@mantine/core/styles.css";
 
 import { ReactNode } from "react";
 
-import { getGlobalSettings } from "@/_features/globals/actions";
 import { AppLayout } from "@/app/(app)/AppLayout";
 import { Providers } from "@/app/(app)/Providers";
-import { GoogleAnalytics, Umami } from "@/components/Analytics";
 import { Toaster } from "sonner";
 
 interface LayoutProps {
@@ -15,20 +13,9 @@ interface LayoutProps {
 
 /* Our app sits here to not cause any conflicts with payload's root layout  */
 const Layout = async ({ children }: LayoutProps) => {
-  const { analytics } = await getGlobalSettings();
 
   return (
     <html>
-
-      {analytics?.googleAnalyticsId && (
-        <GoogleAnalytics id={analytics.googleAnalyticsId} />
-      )}
-      {analytics?.umami?.umamiWebsiteId && analytics?.umami?.umamiSrc && (
-        <Umami
-          id={analytics.umami.umamiWebsiteId}
-          src={analytics.umami.umamiSrc}
-        />
-      )}
 
       <body>
         <Toaster />
