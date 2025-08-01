@@ -5,24 +5,32 @@ const User: CollectionConfig = {
   admin: {
     useAsTitle: "email",
   },
+  labels: {
+    singular: "用户",
+    plural: "用户",
+  },
   auth: true,
   fields: [
     {
       name: "username",
       type: "text",
+      label: "用户名",
     },
     {
       name: "avatar",
+      label: "头像",
       type: "upload",
       relationTo: "media", // required
       required: false,
     },
     {
       name: "metadata",
+      label: "元数据",
       type: "json",
     },
     {
       name: "role",
+      label: "角色",
       type: "select",
       options: ["admin", "user"],
       saveToJWT: true,

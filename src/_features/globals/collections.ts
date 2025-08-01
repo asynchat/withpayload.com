@@ -5,6 +5,10 @@ import { CollectionConfig } from "payload";
 
 const Media: CollectionConfig = {
   slug: "media",
+  labels: {
+    singular: "媒体",
+    plural: "媒体",
+  },
   upload: {
     imageSizes: [
       {
@@ -50,28 +54,4 @@ const Media: CollectionConfig = {
   ],
 };
 
-const Session: CollectionConfig = {
-  slug: "session",
-  fields: [
-    {
-      name: "id",
-      type: "text",
-      required: true,
-      index: true,
-      unique: true,
-    },
-    {
-      name: "user",
-      type: "relationship",
-      relationTo: "users",
-      required: true,
-    },
-    {
-      name: "expiresAt",
-      type: "date",
-      required: true,
-    },
-  ],
-};
-
-export const GlobalsCollections = [Media, Session];
+export const GlobalsCollections = [Media];

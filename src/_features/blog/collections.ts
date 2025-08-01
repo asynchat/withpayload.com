@@ -7,6 +7,10 @@ const Posts: CollectionConfig = {
   admin: {
     useAsTitle: "title",
   },
+  labels: {
+    singular: "文章",
+    plural: "文章",
+  },
   access: {
     read: isAnyone,
     create: isAdmin,
@@ -29,16 +33,17 @@ const Posts: CollectionConfig = {
     {
       name: "title",
       type: "text",
-      label: "Title",
+      label: "标题",
       required: true,
     },
     {
       name: "description",
       type: "text",
-      label: "Description",
+      label: "描述",
     },
     {
       name: "content",
+      label: "内容",
       type: "richText",
       required: true,
     },
@@ -47,35 +52,35 @@ const Posts: CollectionConfig = {
       type: "relationship",
       relationTo: "users",
       required: true,
-      label: "Author",
+      label: "作者",
     },
     {
       name: "tags",
       type: "relationship",
       relationTo: "postsTags",
-      label: "Tags",
+      label: "标签",
       hasMany: true,
     },
     {
       name: "project",
       type: "relationship",
       relationTo: "projects",
-      label: "Project",
+      label: "应用",
       admin: {
         position: "sidebar",
         description:
-          "Select the project this post belongs to",
+          "选择该文章所属的应用",
       }
     },
     {
       name: "featuredImage",
       type: "upload",
       relationTo: "media",
-      label: "Featured Image",
+      label: "特色图片",
       admin: {
         position: "sidebar",
         description:
-          "This image will be used as the featured image for the post",
+          "该图片将作为文章的特色图片",
       },
     },
   ],
@@ -85,6 +90,10 @@ const PostsTags: CollectionConfig = {
   slug: "postsTags",
   admin: {
     useAsTitle: "name",
+  },
+  labels: {
+    singular: "标签",
+    plural: "标签",
   },
   access: {
     read: isAnyone,
@@ -97,11 +106,12 @@ const PostsTags: CollectionConfig = {
       name: "name",
       type: "text",
       required: true,
-      label: "Name",
+      label: "名称",
     },
     {
       name: "label",
       type: "text",
+      label: "标签",
     },
     {
       name: "slug",

@@ -89,11 +89,8 @@ export const initProjectsData: Project[] = [
     description:
       "A modern, performant, and customizable blog starter built with Payload CMS, Next.js, and Tailwind CSS.",
     content: initProjectContent,
-    websiteUrl: "https://payload-tailwind-blog-starter.vercel.app/",
-    githubUrl: "https://github.com/tuanphungcz/payload-tailwind-blog-starter",
-    faviconUrl: "",
+    shopUrl: "https://payload-tailwind-blog-starter.vercel.app/",
     categories: ["starters"],
-    createdBy: "tuanphungcz",
   },
   {
     id: "2",
@@ -103,11 +100,8 @@ export const initProjectsData: Project[] = [
     description:
       "This template has what you need: Auth, Stripe integration, and CMS, all supported by Payload 3.0 for unmatched scalability and control.",
     content: initProjectContent,
-    websiteUrl: "https://payload-saas.livog.com/",
-    githubUrl: "https://github.com/Livog/Payload.3.0.Boilerplate.Saas",
-    faviconUrl: "https://payload-saas.livog.com/favicon.ico",
-    categories: ["starters"],
-    createdBy: "Livog",
+    shopUrl: "https://payload-saas.livog.com/",
+    categories: ["starters"]
   },
   {
     id: "3",
@@ -116,11 +110,8 @@ export const initProjectsData: Project[] = [
     title: "Payload CMS plugin for Auth.js",
     description: "Payload plugin for authentication",
     content: initProjectContent,
-    websiteUrl: "https://www.npmjs.com/package/payload-authjs",
-    githubUrl: "https://github.com/CrawlerCode/payload-authjs",
-    faviconUrl: "",
+    shopUrl: "https://www.npmjs.com/package/payload-authjs",
     categories: ["plugins"],
-    createdBy: "CrawlerCode",
   },
 ];
 

@@ -68,7 +68,6 @@ export interface Config {
   blocks: {};
   collections: {
     media: Media;
-    session: Session;
     users: User;
     projects: Project;
     projectsCategories: ProjectsCategory;
@@ -85,7 +84,6 @@ export interface Config {
   };
   collectionsSelect: {
     media: MediaSelect<false> | MediaSelect<true>;
-    session: SessionSelect<false> | SessionSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     projects: ProjectsSelect<false> | ProjectsSelect<true>;
     projectsCategories: ProjectsCategoriesSelect<false> | ProjectsCategoriesSelect<true>;
@@ -163,17 +161,6 @@ export interface Media {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "session".
- */
-export interface Session {
-  id: string;
-  user: string | User;
-  expiresAt: string;
-  updatedAt: string;
-  createdAt: string;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users".
  */
 export interface User {
@@ -217,13 +204,11 @@ export interface Project {
   title?: string | null;
   description?: string | null;
   content?: string | null;
-  websiteUrl?: string | null;
-  githubUrl: string;
-  faviconUrl?: string | null;
+  version?: string | null;
+  price?: number | null;
+  shopUrl?: string | null;
   thumbnail?: (string | null) | Media;
   categories?: (string | ProjectsCategory)[] | null;
-  createdBy?: string | null;
-  fetchStatus?: ('NOT_FETCHED' | 'FETCHED' | 'ERROR') | null;
   slug?: string | null;
   updatedAt: string;
   createdAt: string;
@@ -272,11 +257,11 @@ export interface Post {
   author: string | User;
   tags?: (string | PostsTag)[] | null;
   /**
-   * Select the project this post belongs to
+   * 选择该文章所属的应用
    */
   project?: (string | null) | Project;
   /**
-   * This image will be used as the featured image for the post
+   * 该图片将作为文章的特色图片
    */
   featuredImage?: (string | null) | Media;
   updatedAt: string;
@@ -304,10 +289,6 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'media';
         value: string | Media;
-      } | null)
-    | ({
-        relationTo: 'session';
-        value: string | Session;
       } | null)
     | ({
         relationTo: 'users';
@@ -406,17 +387,6 @@ export interface MediaSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
- * via the `definition` "session_select".
- */
-export interface SessionSelect<T extends boolean = true> {
-  id?: T;
-  user?: T;
-  expiresAt?: T;
-  updatedAt?: T;
-  createdAt?: T;
-}
-/**
- * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "users_select".
  */
 export interface UsersSelect<T extends boolean = true> {
@@ -449,13 +419,11 @@ export interface ProjectsSelect<T extends boolean = true> {
   title?: T;
   description?: T;
   content?: T;
-  websiteUrl?: T;
-  githubUrl?: T;
-  faviconUrl?: T;
+  version?: T;
+  price?: T;
+  shopUrl?: T;
   thumbnail?: T;
   categories?: T;
-  createdBy?: T;
-  fetchStatus?: T;
   slug?: T;
   updatedAt?: T;
   createdAt?: T;

@@ -7,6 +7,10 @@ const Projects: CollectionConfig = {
   admin: {
     useAsTitle: "title",
   },
+  labels: {
+    singular: "应用",
+    plural: "应用",
+  },
   access: {
     read: isAnyone,
     create: isAdmin,
@@ -16,49 +20,63 @@ const Projects: CollectionConfig = {
   fields: [
     {
       name: "title",
+      label: "标题",
       type: "text",
     },
     {
       name: "description",
+      label: "描述",
       type: "text",
     },
     {
       name: "content",
+      label: "内容",
       type: "textarea",
     },
     {
-      name: "websiteUrl",
+      name: "version",
+      label: "版本",
       type: "text",
+      defaultValue: "1.0.0",
+      admin: {
+        position: "sidebar",
+      },
     },
     {
-      name: "githubUrl",
-      type: "text",
-      required: true,
+      name: "price",
+      label: "价格",
+      type: "number",
+      defaultValue: 0,
+      admin: {
+        position: "sidebar",
+      },
     },
     {
-      name: "faviconUrl",
+      name: "shopUrl",
+      label: "商城链接",
       type: "text",
+      admin: {
+        position: "sidebar",
+      },
     },
     {
       name: "thumbnail",
+      label: "缩略图",
       type: "upload",
       relationTo: "media",
+      admin: {
+        position: "sidebar",
+      },
     },
     {
       name: "categories",
+      label: "分类",
       type: "relationship",
       relationTo: "projectsCategories",
       hasMany: true,
-    },
-    {
-      name: "createdBy",
-      type: "text",
-    },
-    {
-      name: "fetchStatus",
-      type: "select",
-      options: ["NOT_FETCHED", "FETCHED", "ERROR"],
-      defaultValue: "NOT_FETCHED",
+      admin: {
+        position: "sidebar",
+      },
     },
     {
       name: "slug",
@@ -79,6 +97,10 @@ const ProjectsCategories: CollectionConfig = {
   admin: {
     useAsTitle: "name",
   },
+  labels: {
+    singular: "分类",
+    plural: "分类",
+  },
   access: {
     read: isAnyone,
     create: isAdmin,
@@ -90,17 +112,22 @@ const ProjectsCategories: CollectionConfig = {
       name: "name",
       type: "text",
       required: true,
-      label: "Name",
+      label: "名称",
     },
     {
       name: "label",
       type: "text",
+      label: "标签",
     },
     {
       type: "join",
+      label: "应用",
       collection: "projects",
       name: "projectsByCategory",
       on: "categories",
+      admin: {
+        position: "sidebar",
+      },
     },
     {
       name: "slug",
